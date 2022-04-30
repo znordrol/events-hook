@@ -3,7 +3,7 @@ name: Run events hook
 on:
   workflow_dispatch:
   schedule:
-    - cron: '50 16 29 * *'
+    - cron: '50 16 1 11 *'
 
 jobs:
   run_main:
@@ -32,4 +32,4 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           CATAPI_KEY: ${{ secrets.CATAPI_KEY }}
-        run: python main.py
+        run: python main.py hbd

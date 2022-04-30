@@ -1,0 +1,35 @@
+name: Run events hook
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '50 16 27 2 *'
+
+jobs:
+  run_main:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Events
+        env:
+          CI: false
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          CATAPI_KEY: ${{ secrets.CATAPI_KEY }}
+        run: python main.py mensive

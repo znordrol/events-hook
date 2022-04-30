@@ -1,5 +1,5 @@
-from secrets import choice
 from base64 import b64decode
+from secrets import choice
 
 # https://discord.com/channels/305627343895003136/845532524724879380/907373349024432150
 # https://discord.com/channels/747830885339889796/749030749591568484/792317725887168522
@@ -49,9 +49,22 @@ closings = [
     "QnVsYW5ueWEgaW5kYWggeWE=",
 ]
 
+events = {
+    "anniv": {
+        "title": "Happy anniversary, my dearest baby. Kita jadian yeyyy <3 :kissing_closed_eyes: :love_you_gesture:",
+    },
+    "mensive": {
+        "title": "Happy Mensiversary sayaangg <3 :kissing_closed_eyes:",
+    },
+    "hbd": {
+        "title": "Selamat ulang tahun sayaaaangg :birthday:. Wish you all the best",
+    },
+}
+
 
 def get_closings():
     return f"{b64decode(choice(closings)).decode()}, A."
+
 
 def get_uwu_gif():
     return choice(uwu_gif)

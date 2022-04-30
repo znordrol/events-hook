@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '50 16 27 2 *'
+    # Does not support leap year
 
 jobs:
   run_main:
